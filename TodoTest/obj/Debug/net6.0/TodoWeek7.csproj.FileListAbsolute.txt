@@ -1,0 +1,8 @@
+C:\Users\Decagon\source\repos\TodoTest\TodoTest\obj\Debug\net6.0\TodoWeek7.csproj.AssemblyReference.cache
+C:\Users\Decagon\source\repos\TodoTest\TodoTest\obj\Debug\net6.0\TodoWeek7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Decagon\source\repos\TodoTest\TodoTest\obj\Debug\net6.0\TodoWeek7.AssemblyInfoInputs.cache
+C:\Users\Decagon\source\repos\TodoTest\TodoTest\obj\Debug\net6.0\TodoWeek7.AssemblyInfo.cs
+C:\Users\Decagon\source\repos\TodoTest\TodoTest\obj\Debug\net6.0\TodoWeek7.csproj.CoreCompileInputs.cache
+C:\Users\Decagon\source\repos\TodoTest\TodoTest\obj\Debug\net6.0\TodoWeek7.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Decagon\source\repos\TodoTest\TodoTest\obj\Debug\net6.0\TodoWeek7.RazorAssemblyInfo.cache
+C:\Users\Decagon\source\repos\TodoTest\TodoTest\obj\Debug\net6.0\TodoWeek7.RazorAssemblyInfo.cs
