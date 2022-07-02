@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TodoWeek7.Models;
+using TodoTest.ViewModel;
+using TodoTest.Models;
 
 namespace TodoTest.Infastructure
 {

@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
+using TodoTest.Models;
 
-namespace TodoWeek7.Models
+namespace TodoTest.Models
 {
     public class Todo
     {
@@ -15,7 +16,7 @@ namespace TodoWeek7.Models
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public DateTime Schedule {get; set;}
+        
+        public DateTime Schedule { get; set; }
     }
 }

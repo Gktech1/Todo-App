@@ -23,6 +23,21 @@
     
  <link rel='stylesheet'href="https://www.codehim.com/vanilla-javascript/todo-list-in-javascript-with-search-box"/>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+  <script>
+        $(document).ready(function() {
+            $("#selectAll").change(function() {
+                $("input:checkbox").prop('checked', $(this).prop("checked"));
+            });
+            $('.chk').on('click', function() {
+                if ($('.chk:checked').length == $('.chk').length) {
+                    $('#selectAll').prop('checked', true);
+                } else {
+                    $('#selectAll').prop('checked', false);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     

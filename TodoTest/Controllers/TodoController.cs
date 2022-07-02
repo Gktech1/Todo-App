@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoTest.Infastructure;
-using TodoWeek7.Models;
+using TodoTest.ViewModel;
+using TodoTest.Models;
+
 
 namespace TodoTest.Controllers
 {
@@ -22,8 +24,28 @@ namespace TodoTest.Controllers
         public async Task<IActionResult> Index()
         {
             IQueryable<Todo> items = from i in _context.Todo orderby i.Id select i;
-            List<Todo> todo = await items.ToListAsync();
-            return View(todo);
+            List<Todo> todos = await items.ToListAsync();
+
+            var list = new List<TodoViewModel>();
+
+            //Map the todomdel to todoviewmodel
+            if (todos != null)
+            {
+                foreach (var todo in todos)
+                {
+                    list.Add(
+                        new TodoViewModel()
+                        {
+                            Id = todo.Id,
+                            Description = todo.Description,
+                            Name = todo.Name,
+                            Schedule = todo.Schedule
+                        }
+                    );
+                }
+            }
+            return View(list);
+
         }
 
         [HttpPost]
@@ -31,33 +53,47 @@ namespace TodoTest.Controllers
 
 
         {
-            List<Todo> items;
-            if (SearchText != "" && SearchText != null)
+            var todos = new List<Todo>();
+            var list = new List<TodoViewModel>();
+
+           
+           if (SearchText != "" && SearchText != null)
             {
-                items = _context.Todo
-                  .Where(t => t.Name.Contains(SearchText)).ToList();
-                if (items.Count > 0)
+                var items = await _context.Todo
+                  .Where(t => t.Name.Contains(SearchText)).ToListAsync();
+                todos = items.ToList();
 
-                    TempData["Success"] = "The Item was successfully found";
+                TempData["Success"] = "The Item was successfully found";
+            }
+          
 
+            //Map the todomdel to todoviewmodel
+            if (todos != null)
+            {
+                foreach (var todo in todos)
+                {
+                    list.Add(
+                        new TodoViewModel()
+                        {
+                            Id = todo.Id,
+                            Description = todo.Description,
+                            Name = todo.Name,
+                            Schedule = todo.Schedule
+                        }
+                    );
+                }
             }
 
-
-            else
+            if (todos.Count == 0)
             {
-                items = await _context.Todo.ToListAsync();
-
-            }
-            if (items.Count == 0)
                 TempData["Error"] = "The Item was not found";
+            }
 
-
-            return View(items);
-
+            return View(list);
         }
 
-
         // GET/todo/create
+        [HttpGet]
         public IActionResult Create() => View();
 
         //POST /TODO/CREATE 
@@ -75,6 +111,7 @@ namespace TodoTest.Controllers
             return View(item);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             Todo item = await _context.Todo.FindAsync(id);
@@ -85,9 +122,7 @@ namespace TodoTest.Controllers
 
             return View(item);
         }
-
-
-
+       
         //POST /TODO/Edit 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -103,10 +138,29 @@ namespace TodoTest.Controllers
             return View(item);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteSelected(List<TodoViewModel> items)
+        {
 
+             var todoList = new List<Todo>();
+
+            foreach (var item in items)
+            {
+                if (item.TodoList.Selected)
+                {
+                    var singleTodo = await _context.Todo.FindAsync(item.Id);
+                    todoList.Add(singleTodo);
+                }
+            }
+                
+            _context.RemoveRange(todoList);
+            await _context.SaveChangesAsync();
+
+            TempData["success"] = "The Item has been successfully deleted";
+            return RedirectToAction("Index");
+        }
         public async Task<IActionResult> Delete(int id)
         {
-            //Todo item = _context.Todo.FirstOrDefault(s => s.Id == id);
             Todo item = await _context.Todo.FindAsync(id);
             if (item == null)
             {
@@ -116,22 +170,33 @@ namespace TodoTest.Controllers
             {
                 _context.Remove(item);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
-                TempData["Success"] = "The Item has been successfully deleted";
+                TempData["Success"] = "The Items has been successfully deleted";
             }
+            return RedirectToAction("Index");
 
-
-            return View();
         }
+        public async Task<IActionResult> DeleteAll()
+        {
+              var deleteAll = _context.Todo.ToList();
+                _context.RemoveRange(deleteAll);
+               await _context.SaveChangesAsync();
+                TempData["Success"] = "The Item has been successfully deleted";
 
+            return RedirectToAction("Index");
+        }
+           
+    }
+    
 
-       /* [HttpPost]
+}
+
+/* [HttpPost]
         public async Task<IActionResult> DeleteAll(IEnumerable<int> items)
         {
+            items = _context.Todo
+                  .Where(t => t.Name.Contains(SearchText)).ToList();
+
             _context.Todo.Where(x => items.Contains(x.Id)).ToList().ForEach(_context.Todo.Remove(items));
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }*/
-       
-    }
-}
