@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Decagon\\source\\repos\\TodoTest\\TodoTest\\TodoTest.csproj": {}
+    "C:\\Users\\Decagon\\Desktop\\Todolist\\week-7-task-Gktech1\\TodoTest\\TodoTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Decagon\\source\\repos\\TodoTest\\TodoTest\\TodoTest.csproj": {
+    "C:\\Users\\Decagon\\Desktop\\Todolist\\week-7-task-Gktech1\\TodoTest\\TodoTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Decagon\\source\\repos\\TodoTest\\TodoTest\\TodoTest.csproj",
+        "projectUniqueName": "C:\\Users\\Decagon\\Desktop\\Todolist\\week-7-task-Gktech1\\TodoTest\\TodoTest.csproj",
         "projectName": "TodoTest",
-        "projectPath": "C:\\Users\\Decagon\\source\\repos\\TodoTest\\TodoTest\\TodoTest.csproj",
+        "projectPath": "C:\\Users\\Decagon\\Desktop\\Todolist\\week-7-task-Gktech1\\TodoTest\\TodoTest.csproj",
         "packagesPath": "C:\\Users\\Decagon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Decagon\\source\\repos\\TodoTest\\TodoTest\\obj\\",
+        "outputPath": "C:\\Users\\Decagon\\Desktop\\Todolist\\week-7-task-Gktech1\\TodoTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Decagon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -73,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
